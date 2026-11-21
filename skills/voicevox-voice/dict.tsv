@@ -1,0 +1,27 @@
+# 表記	読み(カタカナ)	アクセント核(0=平板)
+# 技術用語の読みをここに足していく。register-dict.py で VOICEVOX に登録される。
+Java	ジャバ	1
+JDK	ジェーディーケー	0
+JEP	ジェップ	1
+JVM	ジェーブイエム	0
+OpenJDK	オープンジェーディーケー	0
+Vivliostyle	ビブリオスタイル	5
+Markdown	マークダウン	4
+GitHub	ギットハブ	4
+API	エーピーアイ	0
+AI	エーアイ	0
+CLI	シーエルアイ	0
+OAuth	オーオース	3
+TypeScript	タイプスクリプト	5
+JavaScript	ジャバスクリプト	5
+Playwright	プレイライト	4
+Remotion	リモーション	3
+FFM	エフエフエム	0
+GC	ジーシー	0
+Loom	ルーム	1
+Valhalla	バルハラ	2
+Panama	パナマ	0
+Amber	アンバー	1
+BOOTH	ブース	1
+技術書典	ギジュツショテン	4
+同人誌	ドウジンシ	3
