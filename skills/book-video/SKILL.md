@@ -83,6 +83,14 @@ npm run apply-brief
 
 ページを選ぶときは `public/content/book/pages/` を Read で実際に見て、図やコードのあるページを選ぶ。
 
+### ハイテンション型（「ドパガキ仕様」「刺激強め」「ショート向け」と言われたら）
+- 尺は 30 秒前後。brief は `tempo: { speed: 1.4, pauseScale: 0.25 }`、`se: normal`、`bgm: { src: beat150.wav, volume: 0.12 }`
+- **1行ごとに画面を変える**（背景の色・ページを毎行切り替える）。セリフは 15 文字前後まで縮める
+- 「問い（めたん）→ 叩き込み（ずんだもん）」の往復で進める。問いの行は `fx: [zoom]` ＋ `se: whoosh`、答えの行は `fx: [shake, flash]` ＋ `se: pop` ＋ `telop: impact`（「資金決済法!?」のように一語で）
+- フックは `fx: [shake, flash, lines]` ＋ `se: boom`、告知は `fx: [flash]` ＋ `se: ding`
+- テンションを上げても内容は盛らない。法律や技術の主張は、通常版と同じく原稿の範囲で、断定しない言い方を保つ
+- 効果音・BGM がない場合は、テンプレートの `python3 scripts/gen-sfx.py` で作る（自作音なので権利の確認は不要）
+
 ## 4. 台本（config/script.yaml）
 
 - 口調は `tone` に合わせる。ずんだもんは「〜なのだ」、めたんは「〜わ」「〜かしら？」。ソロのときは、ずんだもんが視聴者に語りかける形にする
