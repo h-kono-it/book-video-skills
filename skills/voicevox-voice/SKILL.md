@@ -17,9 +17,10 @@ curl -s -m 2 localhost:50021/version || echo "VOICEVOX が起動していない"
 
 ## 1. 動画プロジェクトの中で使うとき
 
-- 台本の正本は `config/script.yaml`。話者 ID は `config/characters.yaml` の `speakerId` にある（ずんだもん=3、四国めたん=2）
-- 一括生成は `npm run voices`。`public/voices/NN_<character>.wav` と `durations.json` が更新され、`src/data/script.ts` に尺が反映される
-- `npm run voices` は毎回すべての行を作り直す（尺の整合が保たれるので、1行だけ直した場合もこれでよい）
+- 台本は `config/script.yaml`。声は `config/characters.yaml` の `speakerId`（VOICEVOX のスタイル ID）と `voice`（speed / pitch / intonation / volume）で決まり、全体の話速 `video-settings.yaml` の `voice.speed` が掛かる。行ごとに `voice:` で上書きもできる
+- 声の変更は、`config/brief.yaml` の `cast` / `tempo` を書き換えて `npm run apply-brief` を実行する（スタイル名から ID への変換には VOICEVOX の起動が必要）
+- 生成は `npm run voices`。テキスト・話者・声パラメータが変わった行だけを作り直す（`-- --all` で全行）。尺は `public/voices/durations.json` に入り、台本から消えた行の wav は掃除される
+- スタイル名の一覧は `python3 $S/synth.py --speakers` で確認する
 
 ## 2. 単発で使うとき / プロジェクトの外
 
@@ -41,7 +42,7 @@ python3 $S/synth.py --file lines.tsv -o out/            # TSV: ファイル名\t
 ## 4. 聞きやすさの目安
 
 - 1行あたり 40 文字以内。長いセリフは2行に分ける
-- 動画側で 1.2 倍速再生しているので（`video-settings.yaml` の `playbackRate`）、`speedScale` は 1.0 のままにする
+- テンポは `speedScale`（話速）で決める。`playbackRate` は 1.0 のままにする（再生を速めると、声が早口になるだけで間が詰まらない）。話速 1.3 を超えると聞き取りにくくなる
 - 掛け合いの間（`pauseAfter`）は 10〜20 フレーム。話題の区切りは 30 フレーム
 
 ## 5. クレジット（必須）
