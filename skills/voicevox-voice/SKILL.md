@@ -37,7 +37,7 @@ python3 $S/synth.py --file lines.tsv -o out/            # TSV: ファイル名\t
 2. **その行だけの言い換え**: `text` にカタカナを書き、`displayText` に字幕用の表記を入れる
 3. 数字・記号: 「Java 21」→「ジャバ ニジュウイチ」、「→」「/」は読まれ方が不安定なので、言葉に開く
 
-直したあとは、該当行だけを再生成して確かめる。
+直したあとは、該当行だけを再生成して確かめる。**辞書の変更は `npm run voices` の差分判定に入らない**ので、その単語を含む行の wav（`public/voices/NN_<character>.wav`）を消してから `npm run voices` を実行する（全部まとめてなら `npm run voices -- --all`）。読みは `curl -s -X POST "localhost:50021/audio_query?speaker=3&text=<URLエンコード>"` の `kana` で、音声を作る前に確認できる。
 
 ## 4. 聞きやすさの目安
 
